@@ -1,8 +1,3 @@
-// STT: 01
-// Họ và tên: Võ Khánh An
-// Buổi 01 - Bài 02
-// Ngôn ngữ: C++
-
 #include <iostream>
 #include <stdlib.h>
 #include <time.h>
