@@ -18,9 +18,9 @@ def cau1():
     global a
     a = []
 
-    n = random.randint(15, 30)
+    n = random.randint(5, 10)
     for i in range (n):
-        a.append(random.randint(-99, 99))
+        a.append(random.randint(-10, 10))
 
 def cau2():
     global n
@@ -49,7 +49,7 @@ def cau3():
     if (cnt0 == n or (cntNeg == 1 and cnt0 == n - 1)):
         return 0
     if (cntNeg % 2 == 1):
-        product = product / maxNeg
+        product = int (product / maxNeg)
     return product
 
 a = []

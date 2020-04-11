@@ -9,15 +9,16 @@
 #include <time.h>
 #define MAXN 105
 #define MAXI 1000000000
+#define ll long long
 
 using namespace std;
 
 void cau1(long a[], long &n)
 {
     srand(time(0));
-    n = 15 + rand() % 16;
+    n = 5 + rand() % 6;
     for (long i = 0; i < n; i++)
-        a[i] = -99 + rand() % 199;
+        a[i] = -10 + rand() % 21;
 }
 
 
@@ -28,10 +29,10 @@ void cau2(long a[], long n)
         cout << "a[" << i << "] = " << a[i] << endl;
 }
 
-double cau3(long a[], long n)
+ll cau3(long a[], long n)
 {
     long cnt0 = 0, cntNeg = 0, maxNeg = -MAXI;
-    double product = 1;
+    ll product = 1;
 
     for (long i = 0; i < n; i++)
         if (a[i] == 0) cnt0++;
