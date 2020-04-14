@@ -1,6 +1,6 @@
 #include <iostream>
-#include <cstring>
-#define MAXN 10000
+#include <string>
+#define MAXN 10005
 
 using namespace std;
 
@@ -44,7 +44,7 @@ void Push (STACK &s, NODE *p) {
     }
 }
 
-bool Pop (STACK &s, long &trave)
+bool Pop (STACK &s, char &trave)
 {
     NODE *p;
     if (!IsEmpty(s)) {
@@ -67,31 +67,32 @@ bool Top (STACK &s, long &trave) {
     return false;
 }
 
-void InputStack (STACK &s, long n) {
-    cin >> n;
-    long x;
-    while (n > 0) {
-        cin >> x;
-        NODE *p = CreateNode (x);
-        Push (s, p);
-        n--;
-    }
-}
-
-void OutputStack (STACK s) {
-    NODE *p = s.pHead;
-    while (p != NULL) {
-        cout << p->info << " ";
-        p = p->pNext;
-    }
-    cout << endl;
+bool InputStack (STACK &s, string &a) {
+    getline (cin, a);
+    long n = a.length();
+    for (long i = 0; i < n; i++)
+        if (a[i] == '(') {
+            NODE *p = CreateNode (a[i]);
+            Push (s, p);
+        }
+        else if (a[i] == ')') {
+            if (IsEmpty(s))
+                return false;
+            char tm;
+            Pop(s, tm);
+        }
+    if (!IsEmpty(s))
+        return false;
+    return true;
 }
 
 int main () {
     long n;
-    char a[MAXN];
+    string a;
     STACK s;
     CreateStack(s);
-    InputStack(s, n);
-    OutputStack(s);
+    if (InputStack(s, a))
+        cout << "BIEU THUC NGOAC DUNG \n";
+    else
+        cout << "BIEU THUC NGOAC SAI \n";
 }

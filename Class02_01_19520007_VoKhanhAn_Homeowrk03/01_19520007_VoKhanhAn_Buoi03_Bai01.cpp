@@ -45,21 +45,6 @@ bool IsEmpty (LIST &l)
     return false;
 }
 
-void Cau1 (LIST &l) {
-    srand(time(0));
-    //long x;
-   // cout << "SO LUONG PHAN TU = ";
-   // cin >> n;
-    //for (int i = 1; i <= n; i++)
-    // while (true) {
-    //     cout << "PHAN TU THU " << i << " = ";
-    //     cin >> x;
-    //     NODE *p = CreateNode(x);
-    //     if (p!=NULL)
-    //         AddTail (l,p);
-    // }
-}
-
 void AddHead (LIST &l, NODE *p)
 {
     if (l.pHead == NULL)
@@ -80,17 +65,37 @@ void AddTail (LIST &l, NODE *p)
     }
 }
 
-void Cau4(LIST l)
+void InputList(LIST &l, long &n)
+{
+    int x;
+    cout << "n = ";
+    cin >> n;
+    for (int i = 1; i <= n; i++)
+    {
+        cout << "x = ";
+        cin >> x;
+        NODE *p = CreateNode(x);
+        if (p!=NULL)
+            AddTail (l,p);
+    }
+}
+
+void OutputList(LIST l)
 {
     NODE *p = l.pHead;
     cout << endl;
     cout << "CAC GIA TRI CUA DSLK HIEN TAI LA: " << endl;
     while (p != NULL)
     {
-        cout << p->info << " ";
+        cout << "Gia tri: ";
+        cout << p->info << endl;
+        cout << "Dia chi pNext: ";
+        cout << p->pNext << endl;
+        cout << "Dia chi toan nut: ";
+        cout << p << endl;
         p = p->pNext;
+        cout << endl;
     }
-
     cout << endl;
 }
 
@@ -195,48 +200,9 @@ void init()
 
 int main()
 {
-    long n, a[MAXN];
-    int res;
-    while (true)
-    {
-        init ();
-        cin >> res;
-        switch (res)
-        {
-            case 1:
-             //   Cau1(a, n);
-                cout << endl;
-                break;
-            case 2:
-               // cau2(a, n);
-                cout << endl;
-                break;
-            case 3:
-              //  cau3(a, n);
-                cout << endl;
-                break;
-            case 4:
-             //   cau4(a, n);
-                cout << endl;
-                break;
-            case 5:
-             //   cau4(a, n);
-                cout << endl;
-                break;
-            case 6:
-             //   cau4(a, n);
-                cout << endl;
-                break;
-            case 7:
-             //   cau4(a, n);
-                cout << endl;
-                break;
-            case 8:
-                cout <<"EXIT" << endl;
-                return 0;
-            default:
-                cout << "Ban da nhap sai, vui long nhap lai: " << endl;
-                cout << endl;
-        }
-    }
+    LIST l;
+    long n;
+    CreateEmptylist(l);
+    InputList(l, n);
+    OutputList (l);
 }
