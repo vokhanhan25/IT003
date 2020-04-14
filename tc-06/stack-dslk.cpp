@@ -7,12 +7,12 @@ struct NODE {
     struct NODE *pNext;
 };
 
-struct LIST {
+struct STACK {
     NODE *pHead;
     NODE *pTail;
 };
 
-void CreateStack (LIST &s) {
+void CreateStack (STACK &s) {
     s.pHead = NULL;
     s.pTail = NULL;
 }
@@ -27,13 +27,13 @@ NODE* CreateNode (long x)
     return p;
 }
 
-bool IsEmpty (LIST s) {
+bool IsEmpty (STACK s) {
     if (s.pHead == NULL)
         return true;
     return false;
 }
 
-void Push (LIST &s, NODE *p) {
+void Push (STACK &s, NODE *p) {
     if (s.pHead == NULL) 
         s.pHead = s.pTail = p;
     else {
@@ -42,7 +42,7 @@ void Push (LIST &s, NODE *p) {
     }
 }
 
-bool Pop (LIST &s, long &trave)
+bool Pop (STACK &s, long &trave)
 {
     NODE *p;
     if (!IsEmpty(s)) {
@@ -57,7 +57,7 @@ bool Pop (LIST &s, long &trave)
     return false;
 }
 
-bool Top (LIST &s, long &trave) {
+bool Top (STACK &s, long &trave) {
     if (!IsEmpty(s)) {
         trave = s.pHead->info;
         return true;
@@ -65,7 +65,7 @@ bool Top (LIST &s, long &trave) {
     return false;
 }
 
-void InputStack (LIST &s, long n) {
+void InputStack (STACK &s, long n) {
     cin >> n;
     long x;
     while (n > 0) {
@@ -76,7 +76,7 @@ void InputStack (LIST &s, long n) {
     }
 }
 
-void OutputStack (LIST s) {
+void OutputStack (STACK s) {
     NODE *p = s.pHead;
     while (p != NULL) {
         cout << p->info << " ";
@@ -87,7 +87,7 @@ void OutputStack (LIST s) {
 
 int main () {
     long n;
-    LIST (s);
+    STACK (s);
     CreateStack(s);
     InputStack(s, n);
     OutputStack(s);

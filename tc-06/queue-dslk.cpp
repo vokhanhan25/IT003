@@ -7,19 +7,34 @@ struct NODE {
     struct NODE *pNext;
 };
 
-struct LIST {
+struct QUEUE {
     NODE *pHead;
     NODE *pTail;
 };
 
-bool IsEmpty (LIST l) {
+void CreateQueue (QUEUE &s) {
+    s.pHead = NULL;
+    s.pTail = NULL;
+}
+
+NODE* CreateNode (long x)
+{
+    NODE *p = new NODE;
+    if (p == NULL)
+        return NULL;
+    p->info = x;
+    p->pNext = NULL;
+    return p;
+}
+
+bool IsEmpty (QUEUE l) {
     if (l.pHead == NULL)
         return true;
     return false;
 }
 
 
-bool EnQueue (LIST &l, NODE *p) {
+bool EnQueue (QUEUE &l, NODE *p) {
     if (IsEmpty(l))
         l.pHead = l.pTail = p;
     else {
@@ -28,7 +43,7 @@ bool EnQueue (LIST &l, NODE *p) {
     }
 }
 
-bool DeQueue (LIST &l, long &trave) {
+bool DeQueue (QUEUE &l, long &trave) {
     NODE *p;
     if (!IsEmpty(l)) {
         p = l.pHead;
@@ -43,7 +58,7 @@ bool DeQueue (LIST &l, long &trave) {
 }
 
 
-bool Front (LIST &l, long &trave) {
+bool Front (QUEUE &l, long &trave) {
     if (!IsEmpty(l)) {
         trave = l.pHead->info;
         return true;
