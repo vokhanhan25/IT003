@@ -1,4 +1,6 @@
 #include <iostream>
+#include <cstring>
+#define MAXN 10000
 
 using namespace std;
 
@@ -87,6 +89,7 @@ void OutputStack (STACK s) {
 
 int main () {
     long n;
+    char a[MAXN];
     STACK s;
     CreateStack(s);
     InputStack(s, n);
