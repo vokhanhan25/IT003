@@ -1,6 +1,6 @@
 // STT: 01
 // Họ và tên: Võ Khánh An
-// Buổi 02 - Bài 03
+// Buổi 03 - Bài 01
 // Ngôn ngữ: C++
 
 #include <iostream>
@@ -220,6 +220,18 @@ int main()
                 cout << endl;
                 break;
             case 5:
+             //   cau4(a, n);
+                cout << endl;
+                break;
+            case 6:
+             //   cau4(a, n);
+                cout << endl;
+                break;
+            case 7:
+             //   cau4(a, n);
+                cout << endl;
+                break;
+            case 8:
                 cout <<"EXIT" << endl;
                 return 0;
             default:
