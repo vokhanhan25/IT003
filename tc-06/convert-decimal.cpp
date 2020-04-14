@@ -1,3 +1,11 @@
+/*
+Võ Khánh An - 19520007 - 10
+Nguyễn Nhật Minh - 19520731 - 10
+Nguyễn Thị Xuân Thủy - 19522327 - 10
+Nguyễn Công Danh - 16520178 - 10
+Trần Hữu Nhi - 16521761 - 10
+*/
+
 #include <iostream>
 using namespace std;
 
