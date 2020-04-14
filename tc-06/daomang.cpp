@@ -1,3 +1,11 @@
+/*
+Võ Khánh An - 19520007 - 10
+Nguyễn Nhật Minh - 19520731 - 10
+Nguyễn Thị Xuân Thủy - 19522327 - 10
+Nguyễn Công Danh - 16520178 - 10
+Trần Hữu Nhi - 16521761 - 10
+*/
+
 #include <iostream>
 
 using namespace std;
@@ -66,9 +74,11 @@ bool Top (LIST &s, long &trave) {
 }
 
 void InputStack (LIST &s, long n) {
+    cout << "NHAP SO LUONG PHAN TU = ";
     cin >> n;
     long x;
     while (n > 0) {
+        cout << "NHAP GIA TRI = ";
         cin >> x;
         NODE *p = CreateNode (x);
         Push (s, p);
@@ -78,6 +88,7 @@ void InputStack (LIST &s, long n) {
 
 void OutputStack (LIST s) {
     NODE *p = s.pHead;
+    cout << "KET QUA SAU KHI DAO MANG: \n";
     while (p != NULL) {
         cout << p->info << " ";
         p = p->pNext;
@@ -90,5 +101,6 @@ int main () {
     LIST (s);
     CreateStack(s);
     InputStack(s, n);
+    cout << endl;
     OutputStack(s);
 }
