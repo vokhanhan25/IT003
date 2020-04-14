@@ -1,6 +1,14 @@
+/*
+Võ Khánh An - 19520007 - 10
+Nguyễn Nhật Minh - 19520731 - 10
+Nguyễn Thị Xuân Thủy - 19522327 - 10
+Nguyễn Công Danh - 16520178 - 10
+Trần Hữu Nhi - 16521761 - 10
+*/
+
 #include <iostream>
 #include <cstring>
-#define MAXN 1000
+#define MAXN 10000
 
 using namespace std;
 
@@ -68,6 +76,7 @@ bool Top (STACK &s, string &trave) {
 }
 
 void InputStack (STACK &s, char a[]) {
+    cout << "NHAP CHUOI KY TU: ";
     gets(a);
     char *token = strtok (a, " ");
     while (token != NULL) {
@@ -79,6 +88,7 @@ void InputStack (STACK &s, char a[]) {
 
 void OutputStack (STACK s) {
     NODE *p = s.pHead;
+    cout << "CHUOI KY TU SAU KHI DUOC DAO NGUOC: ";
     while (p != NULL) {
         cout << p->info << " ";
         p = p->pNext;
@@ -91,5 +101,6 @@ int main () {
     STACK (s);
     CreateStack(s);
     InputStack(s, a);
+    cout << endl;
     OutputStack(s);
 }
