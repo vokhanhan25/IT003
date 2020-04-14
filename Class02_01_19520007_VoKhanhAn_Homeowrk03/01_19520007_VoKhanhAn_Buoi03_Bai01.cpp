@@ -60,7 +60,7 @@ void Cau1 (LIST &l) {
     // }
 }
 
-void Cau2 (LIST &l, NODE *p)
+void AddHead (LIST &l, NODE *p)
 {
     if (l.pHead == NULL)
         l.pHead = l.pTail = p;
@@ -70,7 +70,7 @@ void Cau2 (LIST &l, NODE *p)
     }
 }
 
-void Cau3 (LIST &l, NODE *p)
+void AddTail (LIST &l, NODE *p)
 {
     if (l.pHead == NULL)
         l.pHead = l.pTail = p;
@@ -80,7 +80,7 @@ void Cau3 (LIST &l, NODE *p)
     }
 }
 
-void Cau3(LIST l)
+void Cau4(LIST l)
 {
     NODE *p = l.pHead;
     cout << endl;
@@ -94,7 +94,7 @@ void Cau3(LIST l)
     cout << endl;
 }
 
-void Cau4(LIST l)
+void Cau5(LIST l)
 {
     NODE *p = l.pHead;
     cout << endl;
