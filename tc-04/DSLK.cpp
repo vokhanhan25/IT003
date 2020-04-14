@@ -14,7 +14,7 @@ struct LIST
     NODE *pTail;
 };
 
-void createEmptylist (LIST &l)
+void CreateEmptylist (LIST &l)
 {
     l.pHead = NULL;
     l.pTail = NULL;
@@ -57,7 +57,7 @@ void AddHead (LIST &l, NODE *p)
     }
 }
 
-void addAfterQ(LIST &l, NODE *q, NODE *p)
+void AddAfterQ(LIST &l, NODE *q, NODE *p)
 {
     if (q != NULL)
     {
@@ -155,7 +155,7 @@ void SortList (LIST &l)
                 swap (i->info, j->info);
 }
 
-bool searchNode(LIST l)
+bool SearchNode(LIST l)
 {
     int x;
     cout << "NHAP GIA TRI CAN TIM KIEM TRONG DSLK = ";
@@ -170,7 +170,7 @@ bool searchNode(LIST l)
     return false;
 }
 
-void wf(LIST l)
+void OutputList(LIST l)
 {
     NODE *p = l.pHead;
     cout << endl;
@@ -189,10 +189,10 @@ int main()
 {
     int n;
     LIST l;
-    createEmptylist(l);
+    CreateEmptylist(l);
     InputList(l, n);
-    wf(l);
-    if (searchNode(l))
+    OutputList(l);
+    if (SearchNode(l))
         cout <<"GIA TRI CAN TIM Co XUAT HIEN TRONG DANH SACH" << endl;
     else cout <<"GIA TRI Khong XUAT HIEN TRONG DANH SACH";
 }
