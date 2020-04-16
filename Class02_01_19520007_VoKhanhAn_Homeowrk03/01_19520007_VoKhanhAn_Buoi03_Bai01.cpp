@@ -6,7 +6,6 @@
 #include <iostream>
 #include <stdlib.h>
 #include <time.h>
-#define MAXN 105
 
 using namespace std;
 
@@ -67,59 +66,67 @@ void AddTail (LIST &l, NODE *p)
 
 void InputList(LIST &l, long &n)
 {
-    int x;
-    cout << "n = ";
+    int x; NODE *p;
+    cout << "NHAP THU CONG: \n";
+    cout << "SO LUONG PHAN TU = ";
     cin >> n;
-    for (int i = 1; i <= n; i++)
-    {
-        cout << "x = ";
+    for (int i = 0; i < n; i++) {
+        cout << "NHAP PHAN TU THU " << i + 1 << " : ";
         cin >> x;
-        NODE *p = CreateNode(x);
-        if (p!=NULL)
+        p = CreateNode(x);
+        if (p != NULL)
             AddTail (l,p);
     }
+    
+    cout << endl;
+
+    long m = 39 + rand () % 21;
+    n = n + m;
+    while (m > 0) {
+        x = -99 + rand() % 199;
+        p = CreateNode (x);
+        if (p != NULL)
+            AddHead(l, p);
+        m--;
+    }
+    cout <<"DA NHAP TU DONG XONG! \n";
 }
 
-void OutputList(LIST l)
+void OutputListP(LIST l)
 {
     NODE *p = l.pHead;
     cout << endl;
-    cout << "CAC GIA TRI CUA DSLK HIEN TAI LA: " << endl;
+    cout << "CAC GIA TRI & DIA CHI NODE CUA DSLK HIEN TAI LA: " << endl;
     while (p != NULL)
     {
-        cout << "Gia tri: ";
-        cout << p->info << endl;
-        cout << "Dia chi pNext: ";
-        cout << p->pNext << endl;
-        cout << "Dia chi toan nut: ";
-        cout << p << endl;
+        cout << p->info << " " << p << endl;
         p = p->pNext;
         cout << endl;
     }
     cout << endl;
 }
 
-void Cau5(LIST l)
+void OutputListV(LIST l)
 {
     NODE *p = l.pHead;
-    cout << endl;
     cout << "CAC GIA TRI CUA DSLK HIEN TAI LA: " << endl;
     while (p != NULL)
     {
-        cout << p << " ";
+        cout << p->info << " ";
         p = p->pNext;
     }
-
     cout << endl;
 }
 
-bool Cau6(LIST l, long x)
+bool SearchNode(LIST l, long x, NODE *k)
 {
     NODE *p = l.pHead;
     while (p != NULL)
     {
-        if (x == p->info)
+        if (x == p->info) {
+            k = p;
             return true;
+        }
         p = p->pNext;
     }
     return false;
@@ -156,7 +163,7 @@ bool RemoveAfterQ (LIST &l, NODE *Q, long &x)
     return false;
 }
 
-bool Cau6(LIST &l, long x)
+bool RemoveX(LIST &l, long x)
 {
     NODE *Q = NULL, *p = l.pHead;
     while (p != NULL && p->info != x)
@@ -172,28 +179,33 @@ bool Cau6(LIST &l, long x)
     return true;
 }
 
-bool Cau7(LIST l, long x)
+bool SetX(LIST &l, long y, long x)
 {
     NODE *p = l.pHead;
+    bool ok = false;
     while (p != NULL)
     {
-        if (x == p->info)
-            return true;
+        if (y == p->info) {
+            p->info = x;
+            ok = true;
+        }
         p = p->pNext;
     }
+    if (ok) return true;
     return false;
 }
 
-void init()
+void Init()
 {
-    cout << "NHAN 1 - CHAY CAU 1" << endl;
-    cout << "NHAN 2 - CHAY CAU 2" << endl;
-    cout << "NHAN 3 - CHAY CAU 3" << endl;
-    cout << "NHAN 4 - CHAY CAU 4" << endl;
-    cout << "NHAN 5 - CHAY CAU 4" << endl;
-    cout << "NHAN 6 - CHAY CAU 4" << endl;
-    cout << "NHAN 7 - CHAY CAU 4" << endl;
-    cout << "NHAN 8 - THOAT KHOI CHUONG TRINH" << endl;
+    cout << "NHAN 1 - NHAP DSLK THU CONG & TU DONG" << endl;
+    cout << "NHAN 2 - ADD HEAD" << endl;
+    cout << "NHAN 3 - ADD TAIL" << endl;
+    cout << "NHAN 4 - IN CAC GIA TRI TRONG DANH SACH" << endl;
+    cout << "NHAN 5 - IN CAC GIA TRI & DIA CHI NODE TRONG DANH SACH" << endl;
+    cout << "NHAN 6 - TIM KIEM GIA TRI X TRONG DANH SACH" << endl;
+    cout << "NHAN 7 - XOA MOT GIA TRI TRONG DANH SACH" << endl;
+    cout << "NHAN 8 - CAP NHAT MOT GIA TRI TRONG DANH SACH" << endl;
+    cout << "NHAN 9 - THOAT KHOI CHUONG TRINH" << endl;
     cout << "-------------------" << endl;
     cout << endl;
 }
@@ -201,8 +213,67 @@ void init()
 int main()
 {
     LIST l;
-    long n;
+    long n, choose, x;
+    NODE *p;
     CreateEmptylist(l);
-    InputList(l, n);
-    OutputList (l);
+
+    while (true) {
+        cout << endl;
+        Init ();
+        cin >> choose;
+        switch (choose) {
+            case 1:
+                InputList(l, n);
+                break;          
+            case 2: 
+                cout << "NHAP GIA TRI PHAN TU CAN CHEN DAU: ";
+                cin >> x;
+                p = CreateNode(x);
+                if (p != NULL)
+                    AddHead(l, p);
+                break;
+            case 3:
+                cout << "NHAP GIA TRI PHAN TU CAN CHEN CUOI: ";
+                    cin >> x;
+                    p = CreateNode(x);
+                    if (p != NULL)
+                        AddTail(l, p);
+            case 4:
+                OutputListV(l);
+                break;
+            case 5:
+                OutputListP(l);
+                break;
+            case 6:
+                cout << "NHAP GIA TRI X CAN TIM KIEM = ";
+                cin >> x;
+                if (SearchNode(l, x, p))
+                    cout << "X NAM TRONG DSLK O DIA CHI " << p << endl;
+                else cout << "X KHONG NAM TRONG DSLK" << endl;
+                break;
+            case 7:
+                cout << "NHAP GIA TRI X CAN XOA = ";
+                cin >> x;
+                if (RemoveX(l, x))
+                    cout << "X DA DUOC XOA KHOI DSLK " << endl;
+                else cout << "X KHONG NAM TRONG DSLK" << endl;
+                break;
+            case 8:
+                long y;
+                cout << "NHAP GIA TRI PHAN TU CAN CAP NHAT TRONG DANH SACH = ";
+                cin >> y;
+                cout << "NHAP GIA X SE CAP NHAT CHO PHAN TU TRONG DANH SACH = ";
+                cin >> x;
+                if (SetX(l, y, x)) 
+                    cout << "CAP NHAT GIA TRI X CHO PHAN TU TRONG DANH SACH THANH CONG \n";
+                else cout << "PHAN TU DUOC NHAP KHONG NAM TRONG DANH SACH \n";
+                break;
+            case 9:
+                cout <<"EXIT" << endl;
+                return 0;
+            default:
+                cout << "Ban da nhap sai, vui long nhap lai: " << endl;
+                cout << endl;
+        }
+    }
 }
