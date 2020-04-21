@@ -73,18 +73,22 @@ void AddTail (LIST &l, NODE *p)
 void InputList(LIST &l, long &n)
 {
     STUDENT x; NODE *p;
-    cout << "SO LUONG SINH VIEN = ";
-    cin >> n;
-    for (int i = 0; i < n; i++) {
-        cout << "NHAP TEN SINH VIEN THU " << i + 1 << " : ";
+    string t; n = 0;
+    cout << "NHAP SINH VIEN: " << endl;
+    do {
+        cout << "NHAP TEN SINH VIEN THU " << n + 1 << " : ";
         fflush(stdin);
         getline(cin, x.name);
-        cout << "NHAP GPA SINH VIEN THU " << i + 1 << " : ";
+        cout << "NHAP GPA SINH VIEN THU " << n + 1 << " : ";
         cin >> x.gpa;
         p = CreateNode(x);
         if (p != NULL)
             AddTail (l,p);
-    }
+        n++;
+        cout << "BAN CO MUON TIEP TUC KHONG? (YES/NO): ";
+        fflush(stdin);
+        getline(cin, t);
+    } while (t != "NO");
 }
 
 
