@@ -79,8 +79,13 @@ void InputList(LIST &l, long &n)
         cout << "NHAP TEN SINH VIEN THU " << n + 1 << " : ";
         fflush(stdin);
         getline(cin, x.name);
-        cout << "NHAP GPA SINH VIEN THU " << n + 1 << " : ";
-        cin >> x.gpa;
+        while (true) {
+            cout << "NHAP GPA SINH VIEN THU " << n + 1 << " : ";
+            cin >> x.gpa;
+            if (x.gpa >= 0 && x.gpa <= 10)
+                break;
+            else cout << "DIEM GPA KHONG HOP LE, VUI LONG NHAP LAI!\n";
+        }
         p = CreateNode(x);
         if (p != NULL)
             AddTail (l,p);
@@ -88,7 +93,21 @@ void InputList(LIST &l, long &n)
         cout << "BAN CO MUON TIEP TUC KHONG? (YES/NO): ";
         fflush(stdin);
         getline(cin, t);
+        cout << "\n";
     } while (t != "NO");
+
+    cout <<"DANG NHAP TU DONG... \n";
+    srand(time(0));
+    n = 1 + rand () % 20;
+    for (int i = 0; i < n; i++) {
+        string s = to_string(1 + rand () % 30);
+        x.name = "Sinh vien " + s;
+        x.gpa = static_cast <float> (rand()) / (static_cast <float> (RAND_MAX/10));
+        p = CreateNode(x);
+        if (p != NULL)
+            AddHead (l,p);
+    }
+    cout <<"NHAP TU DONG HOAN TAT!\n";
 }
 
 
@@ -215,14 +234,14 @@ bool RemoveX(LIST &l, string x)
     return true;
 }
 
-bool SetX(LIST &l, string y, string x)
+bool SetX(LIST &l, string y, STUDENT x)
 {
     NODE *p = l.pHead;
     bool ok = false;
     while (p != NULL)
     {
         if (y == p->info.name) {
-            p->info.name = x;
+            p->info = x;
             ok = true;
         }
         p = p->pNext;
@@ -258,6 +277,7 @@ void Init()
 
 int main()
 {
+    STUDENT t;
     LIST l;
     double x;
     long n, choose; 
@@ -296,8 +316,11 @@ int main()
                 getline (cin, y);
                 cout << "NHAP TEN SINH VIEN SE DUOC CAP NHAT TEN = ";
                 fflush (stdin);
-                getline (cin, st);
-                if (SetX(l, y, st)) 
+                getline (cin, t.name);
+
+                cout << "NHAP DIEM GPA CUA SINH VIEN SE DUOC CAP NHAT = ";
+                cin >> t.gpa;
+                if (SetX(l, y, t)) 
                     cout << "CAP NHAT TEN SINH VIEN THANH CONG! \n";
                 else cout << "SINH VIEN CAN CAP NHAT KHONG TON TAI! \n";
                 break;
