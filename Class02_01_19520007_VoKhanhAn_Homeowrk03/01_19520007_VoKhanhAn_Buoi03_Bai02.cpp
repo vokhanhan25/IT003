@@ -139,18 +139,25 @@ bool RemoveX(LIST &l, double x)
     return true;
 }
 
-bool SearchNode(LIST l, double x, string &name)
+void SearchNode(LIST l, double x, string &name)
 {
     NODE *p = l.pHead;
+    bool check = false;
+    cout << "TEN NHUNG SINH VIEN CO DIEM GPA " << x << " LA:\n";
     while (p != NULL)
     {
         if (x == p->info.gpa) {
             name = p->info.name;
-            return true;
+            if (!check) {
+                cout << "TEN NHUNG SINH VIEN CO DIEM GPA " << x << " LA:\n";
+                check = true;
+            }
+            cout << name << "\n";
         }
         p = p->pNext;
     }
-    return false;
+    if (!check)
+        cout << "KHONG CO SINH VIEN NAO THOA MAN\n";
 }
 
 void SortList (LIST &l)
@@ -271,11 +278,9 @@ int main()
                 cout << "DANH SACH DA DUOC SAP XEP! \n"; 
                 break; 
             case 3:
-                cout << "DIEM GPA CUA SINH VIEN CAN TIM = ";
+                cout << "NHAP DIEM GPA CAN TIM = ";
                 cin >> x;
-                if (SearchNode(l, x, st))
-                    cout << "SINH VIEN " << st << " CO DIEM GPA LA " << x << endl;
-                else cout << "KHONG TIM THAY SINH VIEN CO DIEM GPA LA " << x << endl;
+                SearchNode(l, x, st);
                 break;
             case 4:
                 cout << "NHAP TEN SINH VIEN CAN XOA: ";
