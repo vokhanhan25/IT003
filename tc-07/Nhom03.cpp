@@ -130,16 +130,37 @@ NODE* LinearSearchImprove(LIST &l, int x) {
     return NULL;
 }
 
+void OutputList (LIST l) {
+    NODE *p = l.pHead;
+    cout << "GIA TRI CAC PHAN TU TRONG LINKED LIST HIEN TAI: ";
+    while (p != NULL) {
+        cout << p->info << " ";
+        p = p->pNext;
+    }
+    cout << "\n";
+}
+
+void OutputArr(int a[], int n) {
+    cout << "THU TU CAC PHAN TU TRONG ARRAY SAU KHI DUOC SAP XEP: ";
+    for (int i = 0; i < n; i++)
+        cout << a[i] << " ";
+    cout << "\n";
+}
+
 int main() {
     int n, a[MAXN], x, b[MAXN];   
     LIST l;
     CreateEmptylist(l); 
     Input(a, b, n, l);
 
+    OutputList(l);
+    cout << "\n";
+
     cout << "NHAP GIA TRI X CAN TIM KIEM = ";
     cin >> x;
 
     cout << "\n";
+
 
     int resArr = LinearSearch(a, n, x);
     if (resArr != -1)
@@ -162,6 +183,10 @@ int main() {
     else cout << "LINEAR SEARCH CAI TIEN (LINKED LIST): KHONG TIM THAY!\n"; 
 
     sort (b, b + n);
+    cout << "\n";
+    OutputArr(b, n);
+    cout << "\n";
+
     resArr = BinarySearch(b, n, x);
     if (resArr != -1)
         cout << "BINARY SEARCH (ARRAY) = " << resArr << " (DA SAP XEP)\n";
