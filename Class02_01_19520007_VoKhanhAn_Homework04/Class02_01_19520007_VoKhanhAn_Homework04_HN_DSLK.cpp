@@ -1,3 +1,8 @@
+// STT: 01
+// Họ và tên: Võ Khánh An
+// Buổi 04 - Bài 01
+// Ngôn ngữ: C++ / Cài đặt bằng Danh sách liên kết đơn
+
 #include <iostream>
 #define MAXN 10000
 using namespace std;
