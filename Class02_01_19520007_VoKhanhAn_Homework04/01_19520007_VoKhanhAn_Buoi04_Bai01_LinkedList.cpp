@@ -1,66 +1,83 @@
 // STT: 01
 // Họ và tên: Võ Khánh An
 // Buổi 04 - Bài 01
-// Ngôn ngữ: C++ / Cài đặt bằng Mảng
+// Ngôn ngữ: C++ / Cài đặt bằng Danh sách liên kết đơn
 
 #include <iostream>
 #define MAXN 10000
 using namespace std;
 
-struct STACK {
-    int a[MAXN];
-    int top;
+struct NODE {
+    int info;
+    struct NODE *pNext;
 };
 
+struct STACK {
+    NODE *pHead;
+    NODE *pTail;
+};
 
-void CreateStack(STACK &s) {
-    s.top = -1;
+void CreateStack (STACK &s) {
+    s.pHead = NULL;
+    s.pTail = NULL;
+}
+
+NODE* CreateNode (int x)
+{
+    NODE *p = new NODE;
+    if (p == NULL)
+        return NULL;
+    p->info = x;
+    p->pNext = NULL;
+    return p;
 }
 
 bool IsEmpty (STACK s) {
-    if (s.top == -1)
+    if (s.pHead == NULL)
         return true;
     return false;
 }
 
-bool IsFull (STACK s) {
-    if (s.top >= MAXN)
-        return true;
-    return false;
-}
-
-bool Push (STACK &s, int x) {
-    if (!IsFull(s)) {
-        s.top ++;
-        s.a[s.top] = x;
-        return true;
+void Push (STACK &s, NODE *p) {
+    if (s.pHead == NULL) 
+        s.pHead = s.pTail = p;
+    else {
+        p->pNext = s.pHead;
+        s.pHead = p;
     }
-    return false;
 }
 
-
-bool Pop (STACK &s, int &x) {
+bool Pop (STACK &s, int &trave)
+{
+    NODE *p;
     if (!IsEmpty(s)) {
-        x = s.a[s.top];
-        s.top --;
-        return true;
+        p = s.pHead;
+        trave = p->info;
+        s.pHead = s.pHead->pNext;
+        if (s.pHead == NULL)
+            s.pTail = NULL;
+        delete p;
+        return true;        
     }
     return false;
 }
 
-bool Top (STACK &s, int &x) {
+bool Top (STACK &s, int &trave) {
     if (!IsEmpty(s)) {
-        x = s.a[s.top];
+        trave = s.pHead->info;
         return true;
     }
     return false;
 }
 
-void OutputStack(STACK s) {
-    cout << "STACK: <\t";
-    for (int i = 0; i <= s.top; i++)
-        cout << s.a[i] << "\t";
-    cout << ">TOP\n";
+void OutputStack (STACK s) {
+    cout << "STACK: TOP<\t";
+    NODE *p = s.pHead;
+    while (p != NULL) {
+        cout << p->info << "\t";
+        p = p->pNext;
+    }
+    cout << ">\n";
 }
 
 void Init()
@@ -78,14 +95,19 @@ void Init()
 
 void CreatingTower(STACK &a, int choose) {
 
-    for (int i = choose; i > 0; i--) 
-        Push(a, i);
+    NODE *p;
+    for (int i = choose; i > 0; i--)  {
+        p = CreateNode(i);
+        Push(a, p);
+    }
 }
 
 bool Check(STACK s, int choose) {
-    int i = 0;
-    while (i < s.top && s.a[i] > s.a[i + 1])
+    NODE *p = s.pHead; int i = 0;
+    while (p != s.pTail && p->info < p->pNext->info) {
+        p = p->pNext;
         i++;
+    }
     if (i + 1 == choose)
         return true;
     return false;
@@ -93,12 +115,14 @@ bool Check(STACK s, int choose) {
 
 bool Move(STACK &a, STACK &b) {
     int x, y, z;
+    NODE *p;
     if (!Top(a, x))
         return false;
     Top(b, y);
     if (x < y || !IsEmpty(b)) {
         Pop(a, z);
-        Push(b, z);
+        p = CreateNode(z);
+        Push(b, p);
         return true;
     }
     return false;
@@ -121,6 +145,7 @@ void Output(STACK a, STACK b, STACK c) {
 
 int main () {
     STACK a, b, c;
+    NODE *p;
     CreateStack(a);
     CreateStack(b);
     CreateStack(c);
@@ -184,7 +209,6 @@ int main () {
                 cout << "Lua chon khong hop le, vui long nhap lai:\n";
         }
     }
-
     cout <<"\n";
     Output(a, b, c);
     cout <<"CHUC MUNG! BAN DA CHIEN THANG TRO CHOI";

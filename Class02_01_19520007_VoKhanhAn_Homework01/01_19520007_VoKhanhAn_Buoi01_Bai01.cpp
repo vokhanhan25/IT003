@@ -29,7 +29,6 @@ void cau1 (DT a[], long &n)
         cout << "MU SO THU " << i + 1 << " = ";
         cin >> a[i].mu;
     }
-
 }
 
 void cau2 (DT a[], long &n)
