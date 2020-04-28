@@ -42,7 +42,6 @@ bool Pop (STACK &s, int &x) {
     return false;
 }
 
-
 void OutputStack(STACK s) {
     cout << "STACK: ";
     for (int i = 0; i <= s.top; i++)
