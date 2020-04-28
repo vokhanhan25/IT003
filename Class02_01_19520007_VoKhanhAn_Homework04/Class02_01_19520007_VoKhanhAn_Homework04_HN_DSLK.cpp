@@ -66,13 +66,13 @@ bool Top (STACK &s, int &trave) {
 }
 
 void OutputStack (STACK s) {
-    cout << "STACK = REAR<\t";
+    cout << "STACK: TOP<\t";
     NODE *p = s.pHead;
     while (p != NULL) {
         cout << p->info << "\t";
         p = p->pNext;
     }
-    cout << ">FRONT\n";
+    cout << ">\n";
 }
 
 void Init()

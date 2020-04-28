@@ -52,10 +52,10 @@ bool Top (STACK &s, int &x) {
 }
 
 void OutputStack(STACK s) {
-    cout << "STACK = <\t";
+    cout << "STACK: <\t";
     for (int i = 0; i <= s.top; i++)
         cout << s.a[i] << "\t";
-    cout << ">\n";
+    cout << ">TOP\n";
 }
 
 void Init()
@@ -179,5 +179,8 @@ int main () {
                 cout << "Lua chon khong hop le, vui long nhap lai:\n";
         }
     }
+
+    cout <<"\n";
+    Output(a, b, c);
     cout <<"CHUC MUNG! BAN DA CHIEN THANG TRO CHOI";
 }
