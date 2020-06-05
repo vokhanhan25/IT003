@@ -573,6 +573,8 @@ int main() {
                 cout << "Node nho nhat = " << minNode << "\n";
                 break;
             case 20:
+                cout << "EXIT!\n";
+                return 0;
                 break;
             default:
                 cout << "Khong hop le, vui long nhap lai!\n";
