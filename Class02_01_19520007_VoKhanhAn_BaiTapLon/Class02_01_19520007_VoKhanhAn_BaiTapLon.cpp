@@ -1,9 +1,9 @@
 #include <iostream>
 #include <algorithm> //sort (C++)
 #include <stdlib.h> //qsort (C)
-#include <time.h> // Đo thời gian
+#include <time.h> // Get Time
 
-#define MAXN 1e7
+#define MAXN 1e5
 #define space 11
 #define space2 13
 
