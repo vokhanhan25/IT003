@@ -87,6 +87,30 @@ void OutputHashTable(LIST bucket[]) {
     }
 }
 
+NODE* SearchNode(LIST bucket[], int value) {
+    int tableIndex = HashFunction(value);
+    NODE *p = bucket[tableIndex].pHead;
+    while (p != NULL) {
+        if (p->info == value)
+            return p;
+        p = p->pNext;
+    }
+    return NULL;
+}
+
+void IsEmptyBucket(LIST bucket[]) {
+    for (int i = 0; i < M; i++)
+        if (IsEmpty(bucket[i]))
+            cout << "[BUCKET #" << i << "] " << "is empty\n";
+}
+
+bool IsEmptyTable(LIST bucket[]) {
+    for (int i = 0; i < M; i++)
+        if (!IsEmpty(bucket[i]))
+            return false;
+    return true;
+}
+
 int main() {
     LIST bucket [M];
     InitBucket(bucket);
@@ -96,5 +120,13 @@ int main() {
     Insert(bucket, 47);
     Insert(bucket, 10);
     Insert(bucket, 55);
+
     OutputHashTable(bucket);
+    cout << SearchNode(bucket, 75) << "\n";
+    IsEmptyBucket(bucket);
+
+    if (IsEmptyTable(bucket))
+        cout << "Hash Table is empty\n";
+    else 
+        cout << "Hash Table NOT is empty\n";
 }
