@@ -1,8 +1,13 @@
+// STT: 01
+// Họ và tên: Võ Khánh An
+// Ghi chú: Bài tập lớn số 2
+
+
 #include <iostream>
 #include <stdlib.h> 
 #include <time.h> 
 
-#define MAXN 1e6
+#define MAXN 1e5
 #define space 9
 #define space2 6
 
@@ -58,7 +63,6 @@ NODE* CreateNode(double item) {
     temp->left = temp->right = NULL; 
     return temp; 
 } 
-  
   
 NODE* Insert(NODE* root, double key) 
 { 

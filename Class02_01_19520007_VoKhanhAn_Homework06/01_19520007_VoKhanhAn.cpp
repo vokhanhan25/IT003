@@ -103,8 +103,8 @@ void LNR(NODE *root) {
         LNR(root->left );
         cout << root->key << "\t";
         cout << root << "\t";
-        cout << "pLeft: " << root->left << "\t";
-        cout << "pRight: " << root->right << "\t";
+       // cout << "pLeft: " << root->left << "\t";
+       // cout << "pRight: " << root->right << "\t";
         LNR(root->right);
     }
 }
@@ -327,6 +327,9 @@ void GetMinNode(NODE *root, int &minNode) {
     }
 }
 
+int trace[100];
+
+
 
 // bool SearchNode(NODE* root, int key) { 
 //     NODE *current, *pre; 
@@ -416,7 +419,8 @@ void DisplayOption() {
     cout << "17: Sum Odd Node\n";
     cout << "18: Compare Sum Even Node & Sum Odd Node\n";
     cout << "19: Get Max Node & Min Node\n";
-    cout << "20: Thoat khoi chuong trinh\n";
+    cout << "20: Find path form Root to X\n";
+    cout << "21: Thoat khoi chuong trinh\n";
     cout << "\n";
 }
 
@@ -573,6 +577,8 @@ int main() {
                 cout << "Node nho nhat = " << minNode << "\n";
                 break;
             case 20:
+                break;
+            case 21:
                 cout << "EXIT!\n";
                 return 0;
                 break;
