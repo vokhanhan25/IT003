@@ -26,15 +26,15 @@ NODE* Insert (NODE *root, double key) {
         y = x;
         if (key < x->key)
             x = x->left;
-        else
+        else 
             x = x->right;
     }
 
-    if (y == NULL)
+    if (y == NULL) 
         y = p;
-    else if (key < y->key)
+    else if (key < y->key) 
         y->left = p;
-    else
+    else 
         y->right = p;
     return y;
 }
@@ -98,15 +98,13 @@ void LRN(NODE *root) {
     }
 }
 
-bool SearchNode(NODE *root, int key) {
-    if (root == NULL)
+bool SearchNode (NODE *root, double key) {
+    if (root->key == NULL)
         return false;
     if (root->key == key)
         return true;
-
     bool res1 = SearchNode(root->left, key);
     if (res1) return true;
-
     bool res2 = SearchNode(root->right, key);
     return res2;
 }
@@ -151,10 +149,12 @@ bool CompareCountNode(NODE*root) {
         return true;
 }
 
+
+
 void GetMinMax(NODE *root, double &minNode, double &maxNode) {
     if (root != NULL) {
-        minNode = min(minNode, root->key);
-        maxNode = max(maxNode, root->key);
+       // minNode = min(minNode, root->key);
+      //  maxNode = max(maxNode, root->key);
         GetMinMax(root->left, minNode, maxNode);
         GetMinMax(root->right, minNode, maxNode);
     }

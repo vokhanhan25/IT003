@@ -224,7 +224,7 @@ void InputRandom(LIST bucket[]) {
     int n = 45 + rand() % (51);
     int value;
     for (int i = 0; i < n; i++) {
-        value = rand() + rand() / (double)RAND_MAX;
+        value = 856 + rand() % (988-856) + rand() / (double)RAND_MAX;
         Insert(bucket, value);
     }
     cout << "Da nhap tu dong xong!\n";
