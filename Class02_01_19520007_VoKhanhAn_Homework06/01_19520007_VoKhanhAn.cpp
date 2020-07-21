@@ -24,30 +24,45 @@ NODE *CreateNode(int item) {
 } 
   
   
+// NODE* Insert(NODE* root, int key) 
+// { 
+//     NODE* p = CreateNode(key); 
+//     NODE* x = root; 
+//     NODE* y = NULL; 
+  
+//     while (x != NULL) { 
+//         y = x; 
+//         if (key < x->key) 
+//             x = x->left; 
+//         else
+//             x = x->right; 
+//     } 
+
+//     if (y == NULL) 
+//         y = p; 
+  
+//     else if (key < y->key) 
+//         y->left = p; 
+  
+//     else
+//         y->right = p; 
+  
+//     return y; 
+// } 
+
 NODE* Insert(NODE* root, int key) 
 { 
-    NODE* p = CreateNode(key); 
-    NODE* x = root; 
-    NODE* y = NULL; 
+    /* If the tree is empty, return a new node */
+    if (root == NULL) return CreateNode(key); 
   
-    while (x != NULL) { 
-        y = x; 
-        if (key < x->key) 
-            x = x->left; 
-        else
-            x = x->right; 
-    } 
-
-    if (y == NULL) 
-        y = p; 
+    /* Otherwise, recur down the tree */
+    if (key < root->key) 
+        root->left  = Insert(root->left, key); 
+    else if (key > root->key) 
+        root->right = Insert(root->right, key);    
   
-    else if (key < y->key) 
-        y->left = p; 
-  
-    else
-        y->right = p; 
-  
-    return y; 
+    /* return the (unchanged) node pointer */
+    return root; 
 } 
   
 

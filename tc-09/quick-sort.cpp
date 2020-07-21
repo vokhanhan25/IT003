@@ -13,7 +13,6 @@ void QuickSort (int a[], int l, int r) {
         while (a[j] < x) j--;
         if (i <= j) {
             swap(a[i], a[j]);
-            cout << x << " " << i << " " << j << " " << l << " " << r << "\n";
             i++;
             j--;
         }
